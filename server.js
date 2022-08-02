@@ -8,9 +8,9 @@ require('dotenv').config()
 // ROLLBAR include and initialize the rollbar library with your access token
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
-  accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
-  captureUncaught: true,
-  captureUnhandledRejections: true,
+    accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+    captureUncaught: true,
+    captureUnhandledRejections: true,
 })
 
 // generic message sent to Rollbar
@@ -22,7 +22,7 @@ app.use(express.json())
 //SERVER SETUP 
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
-  });
+});
 app.get("/", (_req, res) => {
     res.sendFile(path.resolve("public/index.html"));
     res.sendFile(path.resolve("public/index.css"));
