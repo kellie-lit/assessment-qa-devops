@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const { bots, playerRecord } = require('./data')
 const { shuffleArray } = require('./utils')
+require('dotenv').config()
 
 // ROLLBAR include and initialize the rollbar library with your access token
 var Rollbar = require('rollbar')
@@ -19,7 +20,9 @@ rollbar.log('HERE I AM!')
 app.use(express.json())
 
 //SERVER SETUP 
-app.use(express.static(path.join(__dirname, "/public")));
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+  });
 app.get("/", (_req, res) => {
     res.sendFile(path.resolve("public/index.html"));
     res.sendFile(path.resolve("public/index.css"));
